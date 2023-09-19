@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Flat, Complaint
+from .models import Flat, Complaint, Owner
 
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town', 'owner', 'address']
@@ -15,5 +15,9 @@ class ComplaintAdmin(admin.ModelAdmin):
     raw_id_fields = ['complain_flat']
 
 
+class OwnerAdmin(admin.ModelAdmin):
+    raw_id_fields = ['have_flats']
+
 admin.site.register(Flat, FlatAdmin)
 admin.site.register(Complaint, ComplaintAdmin)
+admin.site.register(Owner, OwnerAdmin)
