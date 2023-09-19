@@ -5,7 +5,8 @@ from django.db import migrations
 def load_owners(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for flat in Flat.objects.all():
+    flats = Flat.objects.all()
+    for flat in flats.iterator():
         Owner.objects.get_or_create(
             owner_name=flat.owner,
             owner_phone_number=flat.owner_pure_phone,)

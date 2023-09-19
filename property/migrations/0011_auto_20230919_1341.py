@@ -5,7 +5,8 @@ from django.db import migrations
 def load_flats(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for owner in Owner.objects.all():
+    owners = Owner.objects.all()
+    for owner in owners.iterator():
         e = Flat.objects.filter(owner=owner.owner_name)
         owner.have_flats.set(e)
 
