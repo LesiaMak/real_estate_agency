@@ -7,8 +7,8 @@ def load_flats(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     owners = Owner.objects.all()
     for owner in owners.iterator():
-        e = Flat.objects.filter(owner=owner.owner_name)
-        owner.have_flats.set(e)
+        flats = Flat.objects.filter(owner=owner.owner_name)
+        owner.have_flats.set(flats)
 
 class Migration(migrations.Migration):
 
