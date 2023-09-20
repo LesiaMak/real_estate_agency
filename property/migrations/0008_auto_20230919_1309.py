@@ -13,9 +13,7 @@ def normalize_phone_numbers(apps, schema_editor):
                 parsed_number, 
                 phonenumbers.PhoneNumberFormat.INTERNATIONAL)
             flat.save()
-        else:
-            flat.owner_pure_phone = None
-            flat.save()
+
 
 
 class Migration(migrations.Migration):
