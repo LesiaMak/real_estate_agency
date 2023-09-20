@@ -63,7 +63,7 @@ class Complaint(models.Model):
     complaint = models.CharField('Текст жалобы', max_length=200)
 
     def __str__(self):
-        return f'{self.complain_flat}'
+        return self.complain_flat
 
 
 class Owner(models.Model):
@@ -73,4 +73,4 @@ class Owner(models.Model):
     have_flats = models.ManyToManyField(Flat, verbose_name='Квартиры в собственности', related_name='flats_owners', db_index=True)
 
     def __str__(self):
-        return f'{self.owner_name}'
+        return self.name
